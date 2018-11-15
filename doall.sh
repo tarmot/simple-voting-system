@@ -10,7 +10,7 @@ if [ -z $1 ]; then
 	echo "Usage: ./doall.sh num-of-code-words [optional-prefix-word-for-group]"
 	exit 1
 fi
-if [ $1 -lt 1] || [ $1 -gt 6 ]; then
+if [ $1 -lt 1 ] || [ $1 -gt 6 ]; then
 	echo "Specify 1 to 6 code words to be used."
 	exit 1
 fi
