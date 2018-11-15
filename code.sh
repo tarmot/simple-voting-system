@@ -1,3 +1,4 @@
 #!/bin/sh
-./words.sh $1 | tr '\n' ' '
+# Options: number of code words, and optional prefix word
+./words.sh $1 $2 | tr '\n' ' '
 echo
