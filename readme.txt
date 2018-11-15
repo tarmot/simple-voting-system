@@ -1,24 +1,16 @@
-# Simple voting system by Tarmo Toikkanen
-# Make sure /usr/share/dict/words exists. On Debian it is found in package "miscfiles".
-# Also make sure the command sendEmail can send email. On Debian it is found in package "sendemail".
+Simple voting system by Tarmo Toikkanen
+Make sure the command sendEmail can send email. On Debian it is found in package "sendemail".
 
-# Run the following commands to generate and send out codes.
+You should provide the list of emails in file emails.txt.
+Edit createmail.sh to contain the message you need.
 
-# 0. Edit createmail.sh to contain the message you want to send.
-vim createmail.sh
+Perhaps first use your own test emails in the emails.txt to make sure everything works.
 
-echo Generating codes...
-# 1. Generate voting codes into a temporary file.
-cat emails.txt |./generate.sh >codes.csv
+Execute ./doall.sh with proper parameters, eg.
 
-echo Sending emails...
-# 2. Send codes to recipients via email.
-cat codes.csv |./send.sh
+./doall.sh 3
+./doall.sh 2 group2
 
-echo Creating checklist...
-# 3. Extract the code checklist
-cat codes.csv |./printcodes.sh |sort >checklist.txt
+The first example creates 3 word codes.
+The second example creates codes that start with the word "group2" and then continue with 2 code words.
 
-echo Cleaning up...
-# 3. Remove the codes to ensure votes cannot be tracked.
-rm codes.csv
